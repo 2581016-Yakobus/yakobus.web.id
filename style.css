@@ -1,0 +1,1056 @@
+/* ==========================================================
+   Variabel warna & dasar
+   ========================================================== */
+:root {
+  --orange: #FA582D;
+  --orange-dark: #E04A20;
+  --black: #141414;
+  --dark: #1E1E1E;
+  --gray: #F2F2F2;
+  --cyan: #8AD3DE;
+  --header-height: 72px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 130px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* ==========================================================
+   Tipografi
+   ========================================================== */
+.eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.eyebrow-dark {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.2;
+  color: var(--black);
+}
+
+/* ==========================================================
+   Tombol
+   ========================================================== */
+.btn-orange,
+.btn-outline-light,
+.btn-outline-dark,
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-orange {
+  background: var(--orange);
+  color: #fff;
+}
+
+.btn-orange:hover {
+  background: var(--orange-dark);
+}
+
+.btn-outline-light {
+  border-color: #fff;
+  color: #fff;
+}
+
+.btn-outline-light:hover {
+  background: #fff;
+  color: var(--black);
+}
+
+.btn-outline-dark {
+  border-color: var(--black);
+  color: var(--black);
+}
+
+.btn-outline-dark:hover {
+  background: var(--black);
+  color: #fff;
+}
+
+.btn-dark {
+  background: var(--black);
+  color: #fff;
+}
+
+.btn-dark:hover {
+  background: var(--orange);
+}
+
+.btn-small {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.8rem;
+}
+
+/* ==========================================================
+   Logo
+   ========================================================== */
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================
+   Navigasi desktop + mega menu
+   ========================================================== */
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 100%;
+  padding: 0 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--black);
+  border-bottom: 3px solid transparent;
+  background: none;
+  cursor: pointer;
+}
+
+.nav-item:hover .nav-link,
+.nav-item.is-open .nav-link {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+.nav-chevron {
+  transition: transform 0.2s ease;
+}
+
+.nav-item:hover .nav-chevron,
+.nav-item.is-open .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.mega-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 280px;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border-top: 3px solid var(--orange);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover .mega-panel,
+.nav-item.is-open .mega-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-panel a {
+  display: block;
+  padding: 0.55rem 0;
+  font-size: 0.92rem;
+  color: #333;
+}
+
+.mega-panel a:hover {
+  color: var(--orange);
+}
+
+/* ==========================================================
+   Drawer mobile
+   ========================================================== */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  width: min(86vw, 380px);
+  height: 100%;
+  overflow-y: auto;
+  background: #fff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+body.drawer-open .drawer {
+  transform: translateX(0);
+}
+
+body.drawer-open .drawer-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.m-group {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.m-group-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: left;
+}
+
+.m-group-list {
+  display: none;
+  padding-bottom: 0.75rem;
+}
+
+.m-group.is-open .m-group-list {
+  display: block;
+}
+
+.m-group-list a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: #555;
+}
+
+/* ==========================================================
+   Modal pencarian
+   ========================================================== */
+.search-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  justify-content: center;
+  padding: 6rem 1.25rem 1.25rem;
+  background: rgba(255, 255, 255, 0.97);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.search-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 760px;
+}
+
+.search-result a {
+  display: block;
+  padding: 0.9rem 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.search-result a:hover {
+  background: var(--gray);
+}
+
+.search-result strong {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--black);
+}
+
+.search-result span {
+  font-size: 0.88rem;
+  color: #666;
+}
+
+/* ==========================================================
+   Hero
+   ========================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  animation: floatGlow 14s ease-in-out infinite alternate;
+}
+
+.hero-glow-a {
+  top: -160px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  background: var(--orange);
+}
+
+.hero-glow-b {
+  bottom: -200px;
+  left: 20%;
+  width: 460px;
+  height: 460px;
+  background: var(--cyan);
+  opacity: 0.3;
+  animation-delay: -6s;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, #000 30%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 100%);
+}
+
+@keyframes floatGlow {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-40px, 30px) scale(1.15);
+  }
+}
+
+/* ==========================================================
+   Sub-menu sticky
+   ========================================================== */
+.subnav {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 40;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.subnav ul {
+  scrollbar-width: none;
+}
+
+.subnav ul::-webkit-scrollbar {
+  display: none;
+}
+
+.subnav li a {
+  display: block;
+  padding: 1rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #555;
+  border-bottom: 3px solid transparent;
+}
+
+.subnav li a:hover,
+.subnav li a.is-active {
+  color: var(--black);
+  border-bottom-color: var(--orange);
+}
+
+/* ==========================================================
+   Ringkasan angka
+   ========================================================== */
+.stats-section {
+  background: var(--gray);
+}
+
+.stats-panel {
+  padding: 2.5rem;
+  border-radius: 12px;
+}
+
+.stats-panel-light {
+  background: linear-gradient(135deg, #e7f6f9 0%, var(--cyan) 100%);
+}
+
+.stats-panel-dark {
+  background: var(--black);
+}
+
+.stat-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.stat-row-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stat-row-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--orange);
+}
+
+/* ==========================================================
+   Kartu "mengapa"
+   ========================================================== */
+.why-card {
+  padding-top: 1.5rem;
+  border-top: 3px solid var(--orange);
+}
+
+.why-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  line-height: 1;
+  color: var(--orange);
+}
+
+.why-title {
+  margin-top: 0.75rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--black);
+}
+
+.why-text {
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   Tab (dipakai di Pengalaman & Keterampilan)
+   ========================================================== */
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.tab-list-scroll {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab-btn {
+  padding: 1rem 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #555;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--black);
+}
+
+.tab-btn.is-active {
+  color: var(--black);
+  border-bottom-color: var(--orange);
+}
+
+.tab-panel-wrap {
+  padding-top: 2.5rem;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeUp 0.4s ease;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.job-period {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.job-stat {
+  padding-right: 1.5rem;
+}
+
+.job-stat-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--black);
+}
+
+.job-stat-label {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.task-card {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+.task-list li {
+  position: relative;
+  padding: 0.7rem 0 0.7rem 1.6rem;
+  border-bottom: 1px solid #eee;
+  line-height: 1.55;
+}
+
+.task-list li:last-child {
+  border-bottom: none;
+}
+
+.task-list li::before {
+  content: '';
+  position: absolute;
+  top: 1.15rem;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+/* ==========================================================
+   Pendidikan
+   ========================================================== */
+.education-section {
+  background: linear-gradient(120deg, #0b0b0b 0%, #1c1c1c 55%, #2a1610 100%);
+}
+
+.edu-card {
+  padding: 1.75rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.edu-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.edu-label {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.chip {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-size: 0.88rem;
+}
+
+/* ==========================================================
+   Keterampilan (panel tab)
+   ========================================================== */
+.skill-panel {
+  display: grid;
+  gap: 2rem;
+  padding: 2.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--black) 0%, #2b2b2b 100%);
+}
+
+@media (min-width: 1024px) {
+  .skill-panel {
+    grid-template-columns: 1fr 1.3fr;
+    align-items: center;
+  }
+}
+
+.skill-links li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.2s ease, padding 0.2s ease;
+}
+
+.skill-links li a:hover {
+  color: var(--orange);
+  padding-left: 0.5rem;
+}
+
+/* ==========================================================
+   Linimasa
+   ========================================================== */
+.timeline-section {
+  background: var(--black);
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 2.5rem;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 0.35rem;
+  left: calc(-2rem - 7px);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 5px rgba(250, 88, 45, 0.25);
+}
+
+.timeline-date {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.timeline-title {
+  margin-top: 0.4rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #fff;
+}
+
+.timeline-place {
+  margin-top: 0.25rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================
+   Marquee instansi
+   ========================================================== */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  color: #9a9a9a;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================================
+   Kontak
+   ========================================================== */
+.filter-btn {
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid #bdbdbd;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--black);
+}
+
+.filter-btn.is-active {
+  background: var(--black);
+  border-color: var(--black);
+  color: #fff;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+.contact-card.is-hidden {
+  display: none;
+}
+
+.contact-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  color: #fff;
+}
+
+.cover-a {
+  background: linear-gradient(135deg, var(--orange), #ff9b73);
+}
+
+.cover-b {
+  background: linear-gradient(135deg, #0f6f7d, var(--cyan));
+}
+
+.cover-c {
+  background: linear-gradient(135deg, #1c1c1c, #4a4a4a);
+}
+
+.contact-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.contact-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--black);
+}
+
+.contact-text {
+  flex: 1;
+  margin-top: 0.6rem;
+  line-height: 1.55;
+}
+
+.contact-link {
+  margin-top: 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--orange);
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================
+   Carousel sorotan
+   ========================================================== */
+.carousel {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.45s ease;
+}
+
+.carousel-card {
+  flex: 0 0 calc((100% - 3rem) / 3);
+  padding: 2rem;
+  border-radius: 12px;
+  background: var(--gray);
+  border-top: 4px solid var(--orange);
+}
+
+@media (max-width: 1023px) {
+  .carousel-card {
+    flex-basis: calc((100% - 1.5rem) / 2);
+  }
+}
+
+@media (max-width: 639px) {
+  .carousel-card {
+    flex-basis: 100%;
+  }
+}
+
+.carousel-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.carousel-title {
+  margin-top: 0.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  color: var(--black);
+}
+
+.carousel-text {
+  margin-top: 0.8rem;
+  line-height: 1.6;
+}
+
+.carousel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--black);
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--black);
+  color: #fff;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ==========================================================
+   Form pesan
+   ========================================================== */
+.newsletter {
+  background: var(--cyan);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background: #fff;
+  outline: none;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--black);
+}
+
+.form-input.has-error {
+  border-color: #c62828;
+}
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+.footer-title {
+  margin-bottom: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.footer-list li {
+  margin-bottom: 0.7rem;
+}
+
+.footer-list a {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s ease;
+}
+
+.footer-list a:hover {
+  color: var(--orange);
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+/* ==========================================================
+   Tombol kembali ke atas & animasi muncul
+   ========================================================== */
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-glow,
+  .marquee-track {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
